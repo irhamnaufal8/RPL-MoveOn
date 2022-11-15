@@ -11,5 +11,7 @@ struct User: Codable {
     var id: String?
     var email: String?
     var username: String?
+    var password: String?
     var profilePictureUrl: String?
+    var phoneNumber: String?
 }
