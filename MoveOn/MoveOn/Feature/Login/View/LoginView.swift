@@ -167,10 +167,10 @@ struct LoginView: View {
                             Text(viewModel.errorMessage)
                                 .font(.caption)
                                 .foregroundColor(.red)
-                                .frame(width: UIScreen.main.bounds.width - 32)
                             
                             Spacer()
                         }
+                        .padding(.horizontal)
                     }
                 }
                 
@@ -213,6 +213,7 @@ struct LoginView: View {
                     }
                 }
                 .padding()
+                .padding(.bottom)
             }
             .navigationBarTitle(Text(""))
             .navigationBarHidden(true)

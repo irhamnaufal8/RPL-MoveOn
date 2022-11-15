@@ -13,12 +13,13 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 if loginStatus {
-                    
+                    HomeView()
                 } else {
                     LoginView()
                 }
             }
         }
+        .tint(.primaryPink)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
