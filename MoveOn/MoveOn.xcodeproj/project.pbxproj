@@ -20,6 +20,10 @@
 		F672897F29234B3900D59E90 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672897E29234B3900D59E90 /* LoginView.swift */; };
 		F672898129234D7C00D59E90 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898029234D7C00D59E90 /* LoginViewModel.swift */; };
 		F672898329234DEB00D59E90 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898229234DEB00D59E90 /* Users.swift */; };
+		F672898629234E9C00D59E90 /* View+hideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898529234E9C00D59E90 /* View+hideKeyboard.swift */; };
+		F672898829234EDD00D59E90 /* Encodable+toJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898729234EDD00D59E90 /* Encodable+toJSON.swift */; };
+		F672898A29234F3400D59E90 /* Int+orZero.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898929234F3400D59E90 /* Int+orZero.swift */; };
+		F672898C29234F6800D59E90 /* String+orEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672898B29234F6800D59E90 /* String+orEmpty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		F672897E29234B3900D59E90 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F672898029234D7C00D59E90 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F672898229234DEB00D59E90 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		F672898529234E9C00D59E90 /* View+hideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+hideKeyboard.swift"; sourceTree = "<group>"; };
+		F672898729234EDD00D59E90 /* Encodable+toJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toJSON.swift"; sourceTree = "<group>"; };
+		F672898929234F3400D59E90 /* Int+orZero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+orZero.swift"; sourceTree = "<group>"; };
+		F672898B29234F6800D59E90 /* String+orEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+orEmpty.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 		F624349F29233ED4006D1A31 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				F672898429234E7500D59E90 /* Swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -191,6 +200,17 @@
 				F672898029234D7C00D59E90 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F672898429234E7500D59E90 /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				F672898529234E9C00D59E90 /* View+hideKeyboard.swift */,
+				F672898729234EDD00D59E90 /* Encodable+toJSON.swift */,
+				F672898929234F3400D59E90 /* Int+orZero.swift */,
+				F672898B29234F6800D59E90 /* String+orEmpty.swift */,
+			);
+			path = Swift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,10 +295,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F672898129234D7C00D59E90 /* LoginViewModel.swift in Sources */,
+				F672898C29234F6800D59E90 /* String+orEmpty.swift in Sources */,
 				F672897F29234B3900D59E90 /* LoginView.swift in Sources */,
+				F672898A29234F3400D59E90 /* Int+orZero.swift in Sources */,
 				F672898329234DEB00D59E90 /* Users.swift in Sources */,
 				F624348E29233D6A006D1A31 /* ContentView.swift in Sources */,
 				F624348C29233D6A006D1A31 /* MoveOnApp.swift in Sources */,
+				F672898629234E9C00D59E90 /* View+hideKeyboard.swift in Sources */,
+				F672898829234EDD00D59E90 /* Encodable+toJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
