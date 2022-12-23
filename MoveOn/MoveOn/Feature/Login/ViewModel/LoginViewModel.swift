@@ -12,7 +12,7 @@ final class LoginViewModel: ObservableObject {
     
     @AppStorage("loginStatus") var loginStatus = false
     
-    @Published var user: User?
+    @Published var user = User()
     @Published var username = ""
     @Published var password = ""
     @Published var email = ""

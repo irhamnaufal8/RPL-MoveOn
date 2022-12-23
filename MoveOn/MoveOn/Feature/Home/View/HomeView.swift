@@ -43,30 +43,20 @@ struct HomeView: View {
                             .clipShape(Circle())
                         }
                     }
-                    .padding(.trailing)
-
+                    
+                    Text("Hi, \(viewModel.username)!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
                     
                     Spacer()
                 }
                 .padding(.horizontal)
+                .padding(.top)
                 
-                ScrollView(showsIndicators: false) {
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Hi, \(viewModel.username)!")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            
-                            Text("Wanna take a ride today?")
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                        }
-                        Spacer()
-                    }
-                    .padding()
-                    .padding(.bottom, 50)
+                VStack {
+                    Spacer()
+                        .frame(height: 70)
                     
                     ZStack(alignment: .top) {
                         VStack {
@@ -74,144 +64,22 @@ struct HomeView: View {
                                 Spacer()
                             }
                             
-                            VStack(alignment: .leading) {
+                            VStack {
+                                Text("Wanna take a ride?")
+                                    .foregroundColor(.black)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
                                 
-                                HStack {
-                                    Text("Near you")
-                                        .font(.headline)
-                                        .foregroundColor(.black)
-                                    
-                                    Spacer()
-                                    
-                                    NavigationLink {
-                                        
-                                    } label: {
-                                        HStack {
-                                            Text("Browse Map")
-                                            
-                                            Image(systemName: "chevron.right")
-                                                .font(.headline)
-                                        }
-                                        .foregroundColor(.primaryPink)
-                                    }
-                                }
-                                .padding(.horizontal)
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack {
-                                        ForEach(0...5, id: \.self) {_ in
-                                            NavigationLink {
-                                                
-                                            } label: {
-                                                VStack {
-                                                    Image("dummy-bicycle")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: UIScreen.main.bounds.width / 2)
-                                                    
-                                                    HStack {
-                                                        Text("150m")
-                                                            .font(.caption)
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    HStack {
-                                                        Text("Polygon MountBike")
-                                                            .font(.headline)
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    HStack {
-                                                        Spacer()
-                                                        
-                                                        Text("Rp10.000/hour")
-                                                            .font(.headline)
-                                                            .foregroundColor(.white)
-                                                        
-                                                        Spacer()
-                                                    }
-                                                    .padding()
-                                                    .background(Color.primaryPink)
-                                                    .cornerRadius(14)
-                                                }
-                                                .foregroundColor(.black)
-                                                .padding()
-                                                .background(.white)
-                                                .cornerRadius(24)
-                                                .shadow(color: .black.opacity(0.1), radius: 6, y: 6)
-                                                .padding(.vertical)
-
-                                            }
-                                        }
-                                    }
-                                    .padding(.horizontal)
+                                NavigationLink {
+                                    MapView()
+                                } label: {
+                                    Image.letsGoButton
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: UIScreen.main.bounds.width - 90)
                                 }
                                 
-                                HStack {
-                                    Text("Your history")
-                                        .font(.headline)
-                                        .foregroundColor(.black)
-                                    
-                                    Spacer()
-                                    
-                                    NavigationLink {
-                                        
-                                    } label: {
-                                        HStack {
-                                            Text("See all")
-                                            
-                                            Image(systemName: "chevron.right")
-                                                .font(.headline)
-                                        }
-                                        .foregroundColor(.primaryPink)
-                                    }
-                                }
-                                .padding(.horizontal)
-                                
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack {
-                                        ForEach(0...5, id: \.self) {_ in
-                                            NavigationLink {
-                                                
-                                            } label: {
-                                                VStack {
-                                                    Image("dummy-bicycle")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: UIScreen.main.bounds.width / 2)
-                                                    
-                                                    HStack {
-                                                        Text("3 hours")
-                                                            .font(.caption)
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    HStack {
-                                                        Text("Polygon MountBike")
-                                                            .font(.headline)
-                                                        Spacer()
-                                                    }
-                                                    
-                                                    HStack {
-                                                        Text("Rp30.000")
-                                                            .font(.headline)
-                                                            .foregroundColor(.black)
-                                                        
-                                                        Spacer()
-                                                    }
-                                                }
-                                                .foregroundColor(.black)
-                                                .padding()
-                                                .background(.white)
-                                                .cornerRadius(24)
-                                                .shadow(color: .black.opacity(0.1), radius: 6, y: 6)
-                                                .padding(.vertical)
-
-                                            }
-                                        }
-                                    }
-                                    .padding(.horizontal)
-                                }
+                                Spacer()
                             }
                             .padding(.top, 100)
                         }
@@ -239,18 +107,12 @@ struct HomeView: View {
                                         VStack(alignment: .leading) {
                                             Text("Your Balance")
                                                 .foregroundColor(.black)
-                                            Text("Rp150.000")
+                                            Text(String(viewModel.fixedBalance).toCurrency())
                                                 .font(.title)
                                                 .fontWeight(.bold)
                                         }
                                         
                                         Spacer()
-                                        
-                                        Image(systemName: "clock.arrow.circlepath")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 40)
-                                            .foregroundColor(.black)
                                         
                                         Button {
                                             viewModel.isShowSheet.toggle()
@@ -280,11 +142,38 @@ struct HomeView: View {
                     }
                 }
             }
+            
+            if viewModel.isLoading {
+                ZStack {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                    
+                    ProgressView()
+                }
+                
+            }
         }
         .onAppear {
             viewModel.getUserData()
         }
         .sheet(isPresented: $viewModel.isShowSheet) {
+            TopUpSheet(viewModel: viewModel)
+        }
+    }
+}
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+        HomeView.TopUpSheet(viewModel: HomeViewModel())
+    }
+}
+
+extension HomeView {
+    struct TopUpSheet: View {
+        @ObservedObject var viewModel: HomeViewModel
+        
+        var body: some View {
             VStack {
                 Text("Top Up")
                     .foregroundColor(.black)
@@ -292,10 +181,45 @@ struct HomeView: View {
                     .fontWeight(.bold)
                     .padding()
                 
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    ForEach(viewModel.topUpOption, id: \.self) { item in
+                        Button {
+                            viewModel.selectOption(button: item)
+                        } label: {
+                            HStack {
+                                Spacer()
+                                
+                                Text(item.rawValue.toCurrency())
+                                    .foregroundColor(.black)
+                                    .font(.title2)
+                                    .fontWeight(.medium)
+                                    
+                                Spacer()
+                            }
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.gray, lineWidth: 0.5)
+                            )
+                            .background(Color.white)
+                        }
+
+                    }
+                }
+                
+                HStack {
+                    Text(String(viewModel.balance).toCurrency())
+                        .foregroundColor(.black)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                }
+                
                 Spacer()
                 
                 Button {
-                    
+                    viewModel.topUpBalance()
                 } label: {
                     HStack {
                         Spacer()
@@ -307,18 +231,22 @@ struct HomeView: View {
                         Spacer()
                     }
                     .padding()
-                    .background(Color.primaryPink)
+                    .background((viewModel.balance == 0) ? Color(UIColor.systemGray3) : Color.primaryPink)
                     .cornerRadius(25)
-                    .padding()
                 }
+                .disabled((viewModel.balance == 0))
             }
-            .presentationDetents([.medium, .large])
+            .background {
+                Color.white
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
+            }
+            .padding()
+            .presentationDetents([.medium])
+            .onDisappear {
+                viewModel.balance = 0
+            }
         }
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
     }
 }

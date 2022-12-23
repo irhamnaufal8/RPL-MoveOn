@@ -11,4 +11,5 @@ import SwiftUI
 extension Image {
     static let logoApp = Image("logo-app-icon")
     static let longLogoApp = Image("logo-app-long")
+    static let letsGoButton = Image("lets-go-button")
 }

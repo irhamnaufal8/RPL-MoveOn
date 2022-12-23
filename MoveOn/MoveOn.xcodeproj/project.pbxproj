@@ -33,6 +33,16 @@
 		F672899D292382E100D59E90 /* String+toURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672899C292382E100D59E90 /* String+toURL.swift */; };
 		F672899F292388B500D59E90 /* View+cornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672899E292388B500D59E90 /* View+cornerRadius.swift */; };
 		F67289A129238B8D00D59E90 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67289A029238B8D00D59E90 /* HomeViewModel.swift */; };
+		F6ACB01B2925FB83004C2D5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ACB01A2925FB83004C2D5B /* MapView.swift */; };
+		F6ACB01E292613AC004C2D5B /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ACB01D292613AC004C2D5B /* MapViewModel.swift */; };
+		F6FCC55D294BDC5C00A64C4C /* MapViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC55C294BDC5C00A64C4C /* MapViewRepresentable.swift */; };
+		F6FCC560294BDE2900A64C4C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC55F294BDE2900A64C4C /* LocationManager.swift */; };
+		F6FCC564295517FA00A64C4C /* Bicycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC563295517FA00A64C4C /* Bicycle.swift */; };
+		F6FCC56629552B8700A64C4C /* GeoPoint+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC56529552B8700A64C4C /* GeoPoint+Codable.swift */; };
+		F6FCC5692955338A00A64C4C /* CurrencyFormatter in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC5682955338A00A64C4C /* CurrencyFormatter */; };
+		F6FCC56B2955338A00A64C4C /* CurrencyText in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC56A2955338A00A64C4C /* CurrencyText */; };
+		F6FCC56D2955338A00A64C4C /* CurrencyTextSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC56C2955338A00A64C4C /* CurrencyTextSwiftUI */; };
+		F6FCC56F2955365100A64C4C /* String+toCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC56E2955365100A64C4C /* String+toCurrency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +68,13 @@
 		F672899C292382E100D59E90 /* String+toURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toURL.swift"; sourceTree = "<group>"; };
 		F672899E292388B500D59E90 /* View+cornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+cornerRadius.swift"; sourceTree = "<group>"; };
 		F67289A029238B8D00D59E90 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F6ACB01A2925FB83004C2D5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		F6ACB01D292613AC004C2D5B /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		F6FCC55C294BDC5C00A64C4C /* MapViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewRepresentable.swift; sourceTree = "<group>"; };
+		F6FCC55F294BDE2900A64C4C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		F6FCC563295517FA00A64C4C /* Bicycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bicycle.swift; sourceTree = "<group>"; };
+		F6FCC56529552B8700A64C4C /* GeoPoint+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeoPoint+Codable.swift"; sourceTree = "<group>"; };
+		F6FCC56E2955365100A64C4C /* String+toCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toCurrency.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +82,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6FCC56B2955338A00A64C4C /* CurrencyText in Frameworks */,
+				F6FCC5692955338A00A64C4C /* CurrencyFormatter in Frameworks */,
 				F67289742923427B00D59E90 /* FirebaseDatabase in Frameworks */,
 				F67289722923427B00D59E90 /* FirebaseAuth in Frameworks */,
 				F67289762923427B00D59E90 /* FirebaseFirestore in Frameworks */,
 				F672897A2923427B00D59E90 /* FirebaseStorage in Frameworks */,
+				F6FCC56D2955338A00A64C4C /* CurrencyTextSwiftUI in Frameworks */,
 				F67289782923427B00D59E90 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +133,7 @@
 		F624349929233E3B006D1A31 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				F6ACB0172925FB61004C2D5B /* Map */,
 				F672899529237FB000D59E90 /* Home */,
 				F672897B29234AD700D59E90 /* Login */,
 				F624348D29233D6A006D1A31 /* ContentView.swift */,
@@ -131,6 +152,7 @@
 		F624349B29233E75006D1A31 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F6FCC55E294BDE1100A64C4C /* Managers */,
 				F62434A229233EFE006D1A31 /* Resources */,
 				F62434A129233EF3006D1A31 /* Model */,
 				F62434A029233EE6006D1A31 /* Info */,
@@ -188,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				F672898229234DEB00D59E90 /* Users.swift */,
+				F6FCC563295517FA00A64C4C /* Bicycle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +258,8 @@
 				F6728993292352B800D59E90 /* Image+Default.swift */,
 				F672899C292382E100D59E90 /* String+toURL.swift */,
 				F672899E292388B500D59E90 /* View+cornerRadius.swift */,
+				F6FCC56529552B8700A64C4C /* GeoPoint+Codable.swift */,
+				F6FCC56E2955365100A64C4C /* String+toCurrency.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -264,6 +289,40 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F6ACB0172925FB61004C2D5B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				F6ACB0192925FB71004C2D5B /* ViewModel */,
+				F6ACB0182925FB6A004C2D5B /* View */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		F6ACB0182925FB6A004C2D5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6ACB01A2925FB83004C2D5B /* MapView.swift */,
+				F6FCC55C294BDC5C00A64C4C /* MapViewRepresentable.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6ACB0192925FB71004C2D5B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6ACB01D292613AC004C2D5B /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F6FCC55E294BDE1100A64C4C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F6FCC55F294BDE2900A64C4C /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -286,6 +345,9 @@
 				F67289752923427B00D59E90 /* FirebaseFirestore */,
 				F67289772923427B00D59E90 /* FirebaseFirestoreSwift */,
 				F67289792923427B00D59E90 /* FirebaseStorage */,
+				F6FCC5682955338A00A64C4C /* CurrencyFormatter */,
+				F6FCC56A2955338A00A64C4C /* CurrencyText */,
+				F6FCC56C2955338A00A64C4C /* CurrencyTextSwiftUI */,
 			);
 			productName = MoveOn;
 			productReference = F624348829233D6A006D1A31 /* MoveOn.app */;
@@ -317,6 +379,7 @@
 			mainGroup = F624347F29233D6A006D1A31;
 			packageReferences = (
 				F67289702923427B00D59E90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */,
 			);
 			productRefGroup = F624348929233D6A006D1A31 /* Products */;
 			projectDirPath = "";
@@ -356,13 +419,20 @@
 				F672898329234DEB00D59E90 /* Users.swift in Sources */,
 				F624348E29233D6A006D1A31 /* ContentView.swift in Sources */,
 				F624348C29233D6A006D1A31 /* MoveOnApp.swift in Sources */,
+				F6ACB01B2925FB83004C2D5B /* MapView.swift in Sources */,
+				F6FCC55D294BDC5C00A64C4C /* MapViewRepresentable.swift in Sources */,
 				F672899D292382E100D59E90 /* String+toURL.swift in Sources */,
+				F6FCC564295517FA00A64C4C /* Bicycle.swift in Sources */,
+				F6FCC560294BDE2900A64C4C /* LocationManager.swift in Sources */,
 				F67289922923526B00D59E90 /* Color+Default.swift in Sources */,
 				F6728994292352B800D59E90 /* Image+Default.swift in Sources */,
 				F672899929237FD700D59E90 /* HomeView.swift in Sources */,
 				F672898629234E9C00D59E90 /* View+hideKeyboard.swift in Sources */,
 				F672898829234EDD00D59E90 /* Encodable+toJSON.swift in Sources */,
+				F6FCC56629552B8700A64C4C /* GeoPoint+Codable.swift in Sources */,
 				F672899B292381ED00D59E90 /* ImageLoader.swift in Sources */,
+				F6ACB01E292613AC004C2D5B /* MapViewModel.swift in Sources */,
+				F6FCC56F2955365100A64C4C /* String+toCurrency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +564,8 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -523,6 +595,8 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -573,6 +647,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marinofelipe/CurrencyText.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -600,6 +682,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F67289702923427B00D59E90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		F6FCC5682955338A00A64C4C /* CurrencyFormatter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */;
+			productName = CurrencyFormatter;
+		};
+		F6FCC56A2955338A00A64C4C /* CurrencyText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */;
+			productName = CurrencyText;
+		};
+		F6FCC56C2955338A00A64C4C /* CurrencyTextSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */;
+			productName = CurrencyTextSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

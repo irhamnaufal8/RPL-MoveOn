@@ -15,8 +15,37 @@ final class HomeViewModel: ObservableObject {
     
     @Published var username = ""
     @Published var profileUrl = "https://i.pinimg.com/originals/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg"
+    @Published var balance = 0
+    @Published var fixedBalance = 0
     
     @Published var isShowSheet = false
+    @Published var topUpNominal = 0
+    
+    @Published var isLoading = false
+    
+    enum TopUpOption: String {
+        case one = "10000"
+        case two = "20000"
+        case three = "50000"
+        case four = "100000"
+    }
+    
+    let topUpOption: [TopUpOption] = [
+        .one, .two, .three, .four
+    ]
+    
+    func selectOption(button: TopUpOption) {
+        switch button {
+        case .one:
+            self.balance = 10000
+        case .two:
+            self.balance = 20000
+        case .three:
+            self.balance = 50000
+        case .four:
+            self.balance = 100000
+        }
+    }
     
     func logOut() {
         try? Auth.auth().signOut()
@@ -41,8 +70,32 @@ final class HomeViewModel: ObservableObject {
                     if let data = data {
                         print("data", data)
                         self.username = data["username"] as? String ?? ""
+                        self.profileUrl = data["profilePictureUrl"] as? String ?? ""
+                        self.fixedBalance = data["balance"] as? Int ?? 0
                     }
                 }
             }
+    }
+    
+    func topUpBalance() {
+        isLoading = true
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("users")
+            .document(uid)
+            .updateData(["balance" : fixedBalance+balance]) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                    self.isLoading = false
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.isShowSheet = false
+                    self.getUserData()
+                }
+            }
+
     }
 }
