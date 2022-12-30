@@ -7,8 +7,12 @@
 
 import CoreLocation
 import Firebase
+import SwiftUI
 
 final class LocationManager: NSObject, ObservableObject {
+    @AppStorage("bicycleId") var bicycleId = ""
+    @AppStorage("isOTW") var isOTW = false
+    
     private let locationManager = CLLocationManager()
     
     override init() {
@@ -21,6 +25,7 @@ final class LocationManager: NSObject, ObservableObject {
 }
 
 extension LocationManager: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard !locations.isEmpty else { return }
 //        locationManager.stopUpdatingLocation()
@@ -37,5 +42,16 @@ extension LocationManager: CLLocationManagerDelegate {
                     return
                 }
             }
+        
+        if self.isOTW && !self.bicycleId.isEmpty {
+            Firestore.firestore().collection("bicycles")
+                .document(self.bicycleId)
+                .updateData(["location" : location]) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        return
+                    }
+                }
+        }
     }
 }

@@ -11,9 +11,11 @@ import Firebase
 
 struct MapViewRepresentable: UIViewRepresentable {
     
+    @AppStorage("bicycleId") var bicycleId = ""
+    @AppStorage("isOTW") var isOTW = false
+    
     let mapView = MKMapView()
     let locationManager = LocationManager()
-//    var geopoints: [String : GeoPoint]
     var bicycles = [Bicycle]()
     
     func makeUIView(context: Context) -> some UIView {

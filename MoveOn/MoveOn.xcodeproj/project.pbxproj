@@ -43,6 +43,8 @@
 		F6FCC56B2955338A00A64C4C /* CurrencyText in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC56A2955338A00A64C4C /* CurrencyText */; };
 		F6FCC56D2955338A00A64C4C /* CurrencyTextSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC56C2955338A00A64C4C /* CurrencyTextSwiftUI */; };
 		F6FCC56F2955365100A64C4C /* String+toCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC56E2955365100A64C4C /* String+toCurrency.swift */; };
+		F6FCC574295E679D00A64C4C /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC573295E679D00A64C4C /* ScannerView.swift */; };
+		F6FCC577295E69D000A64C4C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC576295E69D000A64C4C /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,7 @@
 		F6FCC563295517FA00A64C4C /* Bicycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bicycle.swift; sourceTree = "<group>"; };
 		F6FCC56529552B8700A64C4C /* GeoPoint+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeoPoint+Codable.swift"; sourceTree = "<group>"; };
 		F6FCC56E2955365100A64C4C /* String+toCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+toCurrency.swift"; sourceTree = "<group>"; };
+		F6FCC573295E679D00A64C4C /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,7 @@
 				F672897A2923427B00D59E90 /* FirebaseStorage in Frameworks */,
 				F6FCC56D2955338A00A64C4C /* CurrencyTextSwiftUI in Frameworks */,
 				F67289782923427B00D59E90 /* FirebaseFirestoreSwift in Frameworks */,
+				F6FCC577295E69D000A64C4C /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,7 @@
 		F6ACB0182925FB6A004C2D5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F6FCC573295E679D00A64C4C /* ScannerView.swift */,
 				F6ACB01A2925FB83004C2D5B /* MapView.swift */,
 				F6FCC55C294BDC5C00A64C4C /* MapViewRepresentable.swift */,
 			);
@@ -348,6 +353,7 @@
 				F6FCC5682955338A00A64C4C /* CurrencyFormatter */,
 				F6FCC56A2955338A00A64C4C /* CurrencyText */,
 				F6FCC56C2955338A00A64C4C /* CurrencyTextSwiftUI */,
+				F6FCC576295E69D000A64C4C /* CodeScanner */,
 			);
 			productName = MoveOn;
 			productReference = F624348829233D6A006D1A31 /* MoveOn.app */;
@@ -380,6 +386,7 @@
 			packageReferences = (
 				F67289702923427B00D59E90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */,
+				F6FCC575295E69D000A64C4C /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = F624348929233D6A006D1A31 /* Products */;
 			projectDirPath = "";
@@ -419,6 +426,7 @@
 				F672898329234DEB00D59E90 /* Users.swift in Sources */,
 				F624348E29233D6A006D1A31 /* ContentView.swift in Sources */,
 				F624348C29233D6A006D1A31 /* MoveOnApp.swift in Sources */,
+				F6FCC574295E679D00A64C4C /* ScannerView.swift in Sources */,
 				F6ACB01B2925FB83004C2D5B /* MapView.swift in Sources */,
 				F6FCC55D294BDC5C00A64C4C /* MapViewRepresentable.swift in Sources */,
 				F672899D292382E100D59E90 /* String+toURL.swift in Sources */,
@@ -564,6 +572,7 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to scan the QR Code";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -571,6 +580,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,6 +605,7 @@
 				DEVELOPMENT_TEAM = 39B633LG23;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need the camera to scan the QR Code";
 				INFOPLIST_KEY_NSLocationUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -602,6 +613,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,6 +667,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		F6FCC575295E69D000A64C4C /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -697,6 +717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F6FCC5672955338900A64C4C /* XCRemoteSwiftPackageReference "CurrencyText" */;
 			productName = CurrencyTextSwiftUI;
+		};
+		F6FCC576295E69D000A64C4C /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F6FCC575295E69D000A64C4C /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

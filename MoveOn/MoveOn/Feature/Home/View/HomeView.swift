@@ -153,6 +153,7 @@ struct HomeView: View {
                 
             }
         }
+        .navigationTitle("")
         .onAppear {
             viewModel.getUserData()
         }
