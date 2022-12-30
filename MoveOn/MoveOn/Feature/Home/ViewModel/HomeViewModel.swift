@@ -19,6 +19,7 @@ final class HomeViewModel: ObservableObject {
     @Published var fixedBalance = 0
     
     @Published var isShowSheet = false
+    @Published var isShowingAlert = false
     @Published var topUpNominal = 0
     
     @Published var isLoading = false
@@ -45,14 +46,6 @@ final class HomeViewModel: ObservableObject {
         case .four:
             self.balance = 100000
         }
-    }
-    
-    func logOut() {
-        try? Auth.auth().signOut()
-        withAnimation {
-            loginStatus = false
-        }
-        
     }
     
     func getUserData() {
@@ -84,8 +77,8 @@ final class HomeViewModel: ObservableObject {
         Firestore.firestore().collection("users")
             .document(uid)
             .updateData(["balance" : fixedBalance+balance]) { error in
-                if let error = error {
-                    print(error.localizedDescription)
+                guard error == nil else {
+                    print("error", error ?? "")
                     self.isLoading = false
                     return
                 }
@@ -95,7 +88,7 @@ final class HomeViewModel: ObservableObject {
                     self.isShowSheet = false
                     self.getUserData()
                 }
-            }
+            }        
 
     }
 }

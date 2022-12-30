@@ -78,7 +78,7 @@ final class LoginViewModel: ObservableObject {
     
     private func storeUserData() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        let userData = User(id: uid, email: email, username: username, phoneNumber: phoneNumber).toJSON()
+        let userData = User(id: uid, email: email, username: username, phoneNumber: "0\(phoneNumber)").toJSON()
         
         Firestore.firestore().collection("users")
             .document(uid)

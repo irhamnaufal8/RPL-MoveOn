@@ -22,25 +22,14 @@ struct HomeView: View {
             VStack {
                 HStack {
                     NavigationLink {
-                        Button {
-                            viewModel.logOut()
-                        } label: {
-                            Text("Log Out")
-                                .foregroundColor(.red)
-                                .font(.headline)
-                        }
+                        ProfileView()
                     } label: {
                         ZStack {
-                            Circle()
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFit()
                                 .foregroundColor(.white)
-                                .frame(width: (UIScreen.main.bounds.width / 7.2) + 4, height: (UIScreen.main.bounds.width / 7.2) + 4)
-                            
-                            ImageLoader(
-                                url: viewModel.profileUrl,
-                                width: UIScreen.main.bounds.width / 7.2,
-                                height: UIScreen.main.bounds.width / 7.2
-                            )
-                            .clipShape(Circle())
+                                .frame(width: UIScreen.main.bounds.width / 7.2, height: UIScreen.main.bounds.width / 7.2)
                         }
                     }
                     
@@ -160,6 +149,13 @@ struct HomeView: View {
         .sheet(isPresented: $viewModel.isShowSheet) {
             TopUpSheet(viewModel: viewModel)
         }
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            return Alert(
+                title: Text("Top Up Succeed"),
+                message: Text("Yeay, your balance has been filled! Let's take a ride!"),
+                dismissButton: .default(Text("Okay"))
+            )
+        }
     }
 }
 
@@ -221,6 +217,9 @@ extension HomeView {
                 
                 Button {
                     viewModel.topUpBalance()
+                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                        viewModel.isShowingAlert.toggle()
+                    }
                 } label: {
                     HStack {
                         Spacer()
