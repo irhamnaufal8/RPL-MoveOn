@@ -7,11 +7,14 @@
 
 import SwiftUI
 import MapKit
+import Firebase
 
 struct MapViewRepresentable: UIViewRepresentable {
     
     let mapView = MKMapView()
     let locationManager = LocationManager()
+//    var geopoints: [String : GeoPoint]
+    var bicycles = [Bicycle]()
     
     func makeUIView(context: Context) -> some UIView {
         mapView.delegate = context.coordinator
@@ -24,6 +27,9 @@ struct MapViewRepresentable: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         
+        for i in bicycles {
+            context.coordinator.addAnnotation(withCoordinate: CLLocationCoordinate2D(latitude: i.location?.latitude ?? 0, longitude: i.location?.longitude ?? 0))
+        }
     }
     
     func makeCoordinator() -> MapCoordinator {
@@ -48,6 +54,14 @@ extension MapViewRepresentable {
             )
             
             parent.mapView.setRegion(region, animated: true)
+        }
+        
+        func addAnnotation(withCoordinate coordinate: CLLocationCoordinate2D) {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            self.parent.mapView.addAnnotation(annotation)
+            self.parent.mapView.selectAnnotation(annotation, animated: true)
+            self.parent.mapView.showAnnotations(parent.mapView.annotations, animated: true)
         }
     }
 }

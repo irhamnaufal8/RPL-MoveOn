@@ -8,12 +8,16 @@
 import SwiftUI
 import CoreLocation
 import MapKit
+import Firebase
 
 struct MapView: View {
-    @ObservedObject var viewModel = LocationViewModel()
+    @ObservedObject var viewModel = MapViewModel()
     var body: some View {
-        MapViewRepresentable()
+        MapViewRepresentable(bicycles: viewModel.bicycle)
             .ignoresSafeArea()
+            .onAppear {
+                viewModel.getBicycles()
+            }
     }
 }
 

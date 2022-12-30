@@ -7,10 +7,35 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestoreSwift
 import CoreLocation
 import MapKit
 
 final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject {
+    
+    @Published var bicycle = [Bicycle]()
+    @Published var data = [String : Any]()
+    
+    func getBicycles() {
+        Firestore.firestore().collection("bicycles")
+            .addSnapshotListener { querySnapshot, error in
+                guard let documents = querySnapshot?.documents else {
+                    print("Error \(String(describing: error?.localizedDescription))")
+                    return
+                }
+
+                self.bicycle = documents.compactMap { document -> Bicycle? in
+                    do {
+                        return try document.data(as: Bicycle.self)
+                    } catch {
+                        print("Error decoding document: \(error)")
+                        return nil
+                    }
+                }
+
+                print("Bicycle: \(self.bicycle)")
+            }
+    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         

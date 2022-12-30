@@ -8,7 +8,7 @@
 import Foundation
 import Firebase
 
-struct Bicycle: Codable {
+struct Bicycle: Identifiable, Codable {
     var id: String?
     var location: GeoPoint?
     var name: String?
