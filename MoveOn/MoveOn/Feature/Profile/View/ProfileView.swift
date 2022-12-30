@@ -23,11 +23,11 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text("Username")
                         .font(.caption)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Text(viewModel.username)
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Divider()
                 }
@@ -35,11 +35,11 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text("Email")
                         .font(.caption)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Text(viewModel.email)
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Divider()
                 }
@@ -47,11 +47,11 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     Text("Phone Number")
                         .font(.caption)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Text(viewModel.phoneNumber)
                         .font(.headline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                     
                     Divider()
                 }
@@ -77,7 +77,7 @@ struct ProfileView: View {
             
             Text("Version 0.0 (Beta)")
                 .font(.caption)
-                .foregroundColor(.black)
+                .foregroundColor(.textColor)
                 .padding(.top)
         }
         .padding()
@@ -95,6 +95,9 @@ struct ProfileView: View {
                 secondaryButton: .cancel()
             )
         }
+        .background(
+            Color.backgroundColor.ignoresSafeArea()
+        )
     }
 }
 

@@ -20,6 +20,7 @@ final class HomeViewModel: ObservableObject {
     
     @Published var isShowSheet = false
     @Published var isShowingAlert = false
+    @Published var isTopUpAlertShow = false
     @Published var topUpNominal = 0
     
     @Published var isLoading = false
@@ -61,7 +62,6 @@ final class HomeViewModel: ObservableObject {
                 if let document = document, document.exists {
                     let data = document.data()
                     if let data = data {
-                        print("data", data)
                         self.username = data["username"] as? String ?? ""
                         self.profileUrl = data["profilePictureUrl"] as? String ?? ""
                         self.fixedBalance = data["balance"] as? Int ?? 0
@@ -88,7 +88,6 @@ final class HomeViewModel: ObservableObject {
                     self.isShowSheet = false
                     self.getUserData()
                 }
-            }        
-
+            }
     }
 }

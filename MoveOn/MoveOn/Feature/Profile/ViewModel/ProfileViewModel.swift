@@ -35,7 +35,6 @@ final class ProfileViewModel: ObservableObject {
                 if let document = document, document.exists {
                     let data = document.data()
                     if let data = data {
-                        print("data", data)
                         self.username = data["username"] as? String ?? ""
                         self.email = data["email"] as? String ?? ""
                         self.phoneNumber = data["phoneNumber"] as? String ?? ""

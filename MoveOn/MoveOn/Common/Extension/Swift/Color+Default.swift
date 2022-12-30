@@ -10,4 +10,6 @@ import SwiftUI
 
 extension Color {
     static let primaryPink = Color("primary-pink")
+    static let textColor = Color("text-color")
+    static let backgroundColor = Color("background-color")
 }

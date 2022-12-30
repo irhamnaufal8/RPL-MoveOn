@@ -47,6 +47,8 @@
 		F6FCC577295E69D000A64C4C /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F6FCC576295E69D000A64C4C /* CodeScanner */; };
 		F6FCC57E295EB3AE00A64C4C /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC57D295EB3AD00A64C4C /* ProfileView.swift */; };
 		F6FCC580295EB3D100A64C4C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC57F295EB3D100A64C4C /* ProfileViewModel.swift */; };
+		F6FCC585295EC17000A64C4C /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FCC584295EC17000A64C4C /* TutorialView.swift */; };
+		F6FCC587295F145F00A64C4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6FCC586295F145E00A64C4C /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,8 @@
 		F6FCC57D295EB3AD00A64C4C /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		F6FCC57F295EB3D100A64C4C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F6FCC581295EBD7D00A64C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F6FCC584295EC17000A64C4C /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		F6FCC586295F145E00A64C4C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,11 +147,13 @@
 		F624349929233E3B006D1A31 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				F6FCC582295EC15400A64C4C /* Tutorial */,
 				F6FCC57A295EB38200A64C4C /* Profile */,
 				F6ACB0172925FB61004C2D5B /* Map */,
 				F672899529237FB000D59E90 /* Home */,
 				F672897B29234AD700D59E90 /* Login */,
 				F624348D29233D6A006D1A31 /* ContentView.swift */,
+				F6FCC586295F145E00A64C4C /* LaunchScreen.storyboard */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -360,6 +366,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F6FCC582295EC15400A64C4C /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				F6FCC583295EC15E00A64C4C /* View */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		F6FCC583295EC15E00A64C4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F6FCC584295EC17000A64C4C /* TutorialView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -437,6 +459,7 @@
 				F624349329233D6F006D1A31 /* Preview Assets.xcassets in Resources */,
 				F672898E2923502800D59E90 /* Colors.xcassets in Resources */,
 				F6728990292351AB00D59E90 /* Image.xcassets in Resources */,
+				F6FCC587295F145F00A64C4C /* LaunchScreen.storyboard in Resources */,
 				F624349029233D6F006D1A31 /* AppIcon.xcassets in Resources */,
 				F672896F2923412600D59E90 /* GoogleService-Info.plist in Resources */,
 			);
@@ -451,6 +474,7 @@
 			files = (
 				F672898129234D7C00D59E90 /* LoginViewModel.swift in Sources */,
 				F672899F292388B500D59E90 /* View+cornerRadius.swift in Sources */,
+				F6FCC585295EC17000A64C4C /* TutorialView.swift in Sources */,
 				F672898C29234F6800D59E90 /* String+orEmpty.swift in Sources */,
 				F67289A129238B8D00D59E90 /* HomeViewModel.swift in Sources */,
 				F672897F29234B3900D59E90 /* LoginView.swift in Sources */,
@@ -612,9 +636,9 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -645,9 +669,9 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location information to access the nearby bicycle around you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

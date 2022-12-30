@@ -39,7 +39,7 @@ struct LoginView: View {
                                 text: $viewModel.username
                             )
                             .autocapitalization(.none)
-                            .foregroundColor(.black)
+                            .foregroundColor(.textColor)
                             .padding(12)
                             .frame(width: UIScreen.main.bounds.width - 32, height: 46)
                             .overlay(
@@ -63,7 +63,7 @@ struct LoginView: View {
                             
                             HStack {
                                 Text("+62")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.textColor)
                                 
                                 RoundedRectangle(cornerRadius: 10)
                                     .foregroundColor(.gray)
@@ -76,7 +76,7 @@ struct LoginView: View {
                             }
                             .keyboardType(.phonePad)
                             .autocapitalization(.none)
-                            .foregroundColor(.black)
+                            .foregroundColor(.textColor)
                             .padding(12)
                             .frame(width: UIScreen.main.bounds.width - 32, height: 46)
                             .overlay(
@@ -105,7 +105,7 @@ struct LoginView: View {
                         )
                         .keyboardType(.emailAddress)
                         .autocapitalization(.none)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                         .padding(12)
                         .frame(width: UIScreen.main.bounds.width - 32, height: 46)
                         .overlay(
@@ -143,11 +143,11 @@ struct LoginView: View {
                                 viewModel.hidePasswordToggle()
                             } label: {
                                 Image(systemName: viewModel.isPasswordHidden ? "eye.slash" : "eye")
-                                    .foregroundColor(viewModel.isPasswordHidden ? Color.gray : Color.black)
+                                    .foregroundColor(viewModel.isPasswordHidden ? Color.gray : Color.textColor)
                             }
                         }
                         .autocapitalization(.none)
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                         .padding(12)
                         .frame(width: UIScreen.main.bounds.width - 32, height: 46)
                         .overlay(
@@ -199,7 +199,7 @@ struct LoginView: View {
                         Text(viewModel.isSignUpView ?
                              "Already have an account?" :
                                 "Don't have an account?")
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                         .font(.body)
                         
                         Button {
@@ -222,6 +222,9 @@ struct LoginView: View {
             .navigationBarTitle(Text(""))
             .navigationBarHidden(true)
         }
+        .background(
+            Color.backgroundColor.ignoresSafeArea()
+        )
     }
 }
 

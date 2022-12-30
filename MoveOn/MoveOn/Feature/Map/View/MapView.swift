@@ -25,30 +25,46 @@ struct MapView: View {
                         }
                     
                     VStack {
-                        Button {
-                            viewModel.isShowQRSheet.toggle()
-                        } label: {
-                            HStack {
+                        HStack {
+                            Spacer()
+                            
+                            Button(action: {
+                                viewModel.isShowTutorial.toggle()
+                            }, label: {
+                                Image(systemName: "questionmark.circle")
+                                    .font(.system(size: 36))
+                                    .foregroundColor(.primaryPink)
+                            })
+                            
+                        }
+                        .padding(.trailing)
+                        
+                        VStack {
+                            Button {
+                                viewModel.isShowQRSheet.toggle()
+                            } label: {
                                 HStack {
-                                    Spacer()
-                                    
-                                    Text("Scan QR Code")
-                                        .foregroundColor(.white)
-                                        .font(.headline)
-                                    
-                                    Spacer()
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Text("Scan QR Code")
+                                            .foregroundColor(.white)
+                                            .font(.headline)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding()
+                                    .background(Color.primaryPink)
+                                    .cornerRadius(25)
                                 }
                                 .padding()
-                                .background(Color.primaryPink)
-                                .cornerRadius(25)
                             }
-                            .padding()
                         }
+                        .background {
+                            Color.backgroundColor
+                        }
+                        .cornerRadius(16, corners: [.topLeft, .topRight])
                     }
-                    .background {
-                        Color.white
-                    }
-                    .cornerRadius(16, corners: [.topLeft, .topRight])
                 }
                 .edgesIgnoringSafeArea(.bottom)
                 .sheet(isPresented: $viewModel.isShowQRSheet) {
@@ -132,7 +148,7 @@ struct MapView: View {
                         }
                         .padding(.top)
                         .background {
-                            Color.white
+                            Color.backgroundColor
                         }
                         .cornerRadius(16, corners: [.topLeft, .topRight])
                     }
@@ -151,6 +167,14 @@ struct MapView: View {
                 }),
                 secondaryButton: .cancel()
             )
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                viewModel.isShowTutorial = true
+            }
+        }
+        .fullScreenCover(isPresented: $viewModel.isShowTutorial) {
+            TutorialView()
         }
     }
 }

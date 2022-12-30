@@ -25,7 +25,7 @@ struct ScannerView: View {
             VStack(alignment: .leading) {
                 Text("Your Bicycle Id: \(viewModel.scannedText)")
                     .multilineTextAlignment(.leading)
-                    .foregroundColor(.black)
+                    .foregroundColor(.textColor)
                     .font(.headline)
                     .padding(.horizontal)
                 
@@ -56,6 +56,9 @@ struct ScannerView: View {
                 .disabled(viewModel.scannedText.isEmpty)
             }
         }
+        .background(
+            Color.backgroundColor.ignoresSafeArea()
+        )
     }
 }
 

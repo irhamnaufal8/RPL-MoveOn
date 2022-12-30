@@ -28,7 +28,6 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard !locations.isEmpty else { return }
-//        locationManager.stopUpdatingLocation()
         
         let last = locations.last
         guard let uid = Auth.auth().currentUser?.uid else { return }

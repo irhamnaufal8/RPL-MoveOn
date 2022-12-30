@@ -16,6 +16,7 @@ final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     @AppStorage("bicycleId") var bicycleId = ""
     @AppStorage("isOTW") var isOTW = false
     @AppStorage("bill") var bill = 0
+    
     @Published var dummyBill = 10000
     @Published var totalBill = 0
     
@@ -28,6 +29,8 @@ final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
     @Published var time = Timer()
     @Published var totalTime = 0
     @Published var isTimerStart = false
+    
+    @Published var isShowTutorial = false
     
     func updateBill() {
         totalBill = bill
@@ -67,8 +70,6 @@ final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
                         return nil
                     }
                 }
-
-                print("Bicycle: \(self.bicycle)")
             }
     }
     
@@ -85,7 +86,6 @@ final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
                 if let document = document, document.exists {
                     let data = document.data()
                     if let data = data {
-                        print("data", data)
                         self.bill = data["price"] as? Int ?? 0
                     }
                 }
@@ -147,7 +147,6 @@ final class MapViewModel: NSObject, CLLocationManagerDelegate, ObservableObject 
                 if let document = document, document.exists {
                     let data = document.data()
                     if let data = data {
-                        print("data", data)
                         self.fixedBalance = data["balance"] as? Int ?? 0
                     }
                 }

@@ -55,24 +55,38 @@ struct HomeView: View {
                             
                             VStack {
                                 Text("Wanna take a ride?")
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.textColor)
                                     .font(.title2)
                                     .fontWeight(.bold)
                                 
                                 NavigationLink {
-                                    MapView()
+                                    if viewModel.fixedBalance == 0 {
+                                        
+                                    } else {
+                                        MapView()
+                                    }
                                 } label: {
-                                    Image.letsGoButton
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: UIScreen.main.bounds.width - 90)
+                                    if viewModel.fixedBalance == 0 {
+                                        Image.letsGoButton
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width - 90)
+                                            .onTapGesture {
+                                                viewModel.isTopUpAlertShow.toggle()
+                                            }
+                                    } else {
+                                        Image.letsGoButton
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: UIScreen.main.bounds.width - 90)
+                                    }
                                 }
                                 
                                 Spacer()
                             }
                             .padding(.top, 100)
                         }
-                        .background(.white)
+                        .background(Color.backgroundColor)
                         .cornerRadius(48, corners: .topLeft)
                         
                         HStack {
@@ -95,7 +109,7 @@ struct HomeView: View {
                                     HStack(spacing: 16) {
                                         VStack(alignment: .leading) {
                                             Text("Your Balance")
-                                                .foregroundColor(.black)
+                                                .foregroundColor(.textColor)
                                             Text(String(viewModel.fixedBalance).toCurrency())
                                                 .font(.title)
                                                 .fontWeight(.bold)
@@ -124,12 +138,19 @@ struct HomeView: View {
                                 .size(width: UIScreen.main.bounds.width - 32, height: 270)
                         )
                         .frame(width: UIScreen.main.bounds.width - 32, height: 120)
-                        .background(.white)
+                        .background(Color.backgroundColor)
                         .cornerRadius(24)
                         .padding(.top, -50)
                         .shadow(color: .black.opacity(0.2), radius: 6, y: 6)
                     }
                 }
+            }
+            .alert(isPresented: $viewModel.isShowingAlert) {
+                return Alert(
+                    title: Text("Top Up Succeed"),
+                    message: Text("Yeay, your balance has been filled! Let's take a ride!"),
+                    dismissButton: .default(Text("Okay"))
+                )
             }
             
             if viewModel.isLoading {
@@ -149,10 +170,10 @@ struct HomeView: View {
         .sheet(isPresented: $viewModel.isShowSheet) {
             TopUpSheet(viewModel: viewModel)
         }
-        .alert(isPresented: $viewModel.isShowingAlert) {
+        .alert(isPresented: $viewModel.isTopUpAlertShow) {
             return Alert(
-                title: Text("Top Up Succeed"),
-                message: Text("Yeay, your balance has been filled! Let's take a ride!"),
+                title: Text("Ooops"),
+                message: Text("Your balance is 0. You need to top up first to rent a bicycle."),
                 dismissButton: .default(Text("Okay"))
             )
         }
@@ -173,7 +194,7 @@ extension HomeView {
         var body: some View {
             VStack {
                 Text("Top Up")
-                    .foregroundColor(.black)
+                    .foregroundColor(.textColor)
                     .font(.title2)
                     .fontWeight(.bold)
                     .padding()
@@ -187,7 +208,7 @@ extension HomeView {
                                 Spacer()
                                 
                                 Text(item.rawValue.toCurrency())
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.textColor)
                                     .font(.title2)
                                     .fontWeight(.medium)
                                     
@@ -198,7 +219,7 @@ extension HomeView {
                                 RoundedRectangle(cornerRadius: 6)
                                     .stroke(Color.gray, lineWidth: 0.5)
                             )
-                            .background(Color.white)
+                            .background(Color.backgroundColor)
                         }
 
                     }
@@ -206,7 +227,7 @@ extension HomeView {
                 
                 HStack {
                     Text(String(viewModel.balance).toCurrency())
-                        .foregroundColor(.black)
+                        .foregroundColor(.textColor)
                         .font(.title2)
                         .fontWeight(.bold)
                     
@@ -236,17 +257,14 @@ extension HomeView {
                 }
                 .disabled((viewModel.balance == 0))
             }
-            .background {
-                Color.white
-                    .onTapGesture {
-                        hideKeyboard()
-                    }
-            }
             .padding()
             .presentationDetents([.medium])
             .onDisappear {
                 viewModel.balance = 0
             }
+            .background(
+                Color.backgroundColor.ignoresSafeArea()
+            )
         }
     }
 }
