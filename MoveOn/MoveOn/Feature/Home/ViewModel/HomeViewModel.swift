@@ -19,9 +19,9 @@ final class HomeViewModel: ObservableObject {
     @Published var fixedBalance = 0
     
     @Published var isShowSheet = false
-    @Published var isShowingAlert = false
-    @Published var isTopUpAlertShow = false
     @Published var topUpNominal = 0
+    
+    @Published var alertHandling: AlertHandling?
     
     @Published var isLoading = false
     
@@ -30,6 +30,12 @@ final class HomeViewModel: ObservableObject {
         case two = "20000"
         case three = "50000"
         case four = "100000"
+    }
+    
+    enum AlertHandling: String, Identifiable {
+        var id: String { rawValue }
+        case topUpSuccess
+        case balanceIsZero
     }
     
     let topUpOption: [TopUpOption] = [
@@ -87,6 +93,10 @@ final class HomeViewModel: ObservableObject {
                     self.isLoading = false
                     self.isShowSheet = false
                     self.getUserData()
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                    self.alertHandling = .topUpSuccess
                 }
             }
     }

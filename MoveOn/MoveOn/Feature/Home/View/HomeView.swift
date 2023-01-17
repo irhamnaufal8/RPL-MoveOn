@@ -72,7 +72,7 @@ struct HomeView: View {
                                             .scaledToFit()
                                             .frame(width: UIScreen.main.bounds.width - 90)
                                             .onTapGesture {
-                                                viewModel.isTopUpAlertShow.toggle()
+                                                viewModel.alertHandling = .balanceIsZero
                                             }
                                     } else {
                                         Image.letsGoButton
@@ -145,13 +145,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .alert(isPresented: $viewModel.isShowingAlert) {
-                return Alert(
-                    title: Text("Top Up Succeed"),
-                    message: Text("Yeay, your balance has been filled! Let's take a ride!"),
-                    dismissButton: .default(Text("Okay"))
-                )
-            }
             
             if viewModel.isLoading {
                 ZStack {
@@ -170,12 +163,21 @@ struct HomeView: View {
         .sheet(isPresented: $viewModel.isShowSheet) {
             TopUpSheet(viewModel: viewModel)
         }
-        .alert(isPresented: $viewModel.isTopUpAlertShow) {
-            return Alert(
-                title: Text("Ooops"),
-                message: Text("Your balance is 0. You need to top up first to rent a bicycle."),
-                dismissButton: .default(Text("Okay"))
-            )
+        .alert(item: $viewModel.alertHandling) { alert in
+            switch alert {
+            case .topUpSuccess:
+                return Alert(
+                    title: Text("Top Up Succeed"),
+                    message: Text("Yeay, your balance has been filled! Let's take a ride!"),
+                    dismissButton: .default(Text("Okay"))
+                )
+            case .balanceIsZero:
+                return Alert(
+                    title: Text("Ooops"),
+                    message: Text("Your balance is 0. You need to top up first to rent a bicycle."),
+                    dismissButton: .default(Text("Okay"))
+                )
+            }
         }
     }
 }
@@ -238,9 +240,6 @@ extension HomeView {
                 
                 Button {
                     viewModel.topUpBalance()
-                    DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                        viewModel.isShowingAlert.toggle()
-                    }
                 } label: {
                     HStack {
                         Spacer()
